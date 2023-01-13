@@ -63,5 +63,45 @@ def range(self,rectangle:Rectangle,node=None, depth=0, points=None -> List[Point
     points=self.range(rectangle,node.right, depth+1, points)
  return points
 
+def range_test():
+    points=[point(7,2),point(5,4),point(9,6),point(4,7),points(8,1),point(2,3)]
+    kd=KDtree()
+    kd.insert(points)
+    result=kd.range(Rectangle(Point(0,0), Point(6,6)))
+    assert sorted(resulted)==sorted([Point(2,3), Point(5,4)])
+
+
+def performance_test():
+    points=[Point(x,y) for x in range for y in range(1000)]
+
+    lower=Point(500,500)
+    upper=Point(504,504)
+    rectangle =Rectangle (lower,upper)
+    #native method#
+    start=int(round(time.time()*1000))
+    print(f'native method':{end-start}ms')
+   #naive_time=(end-start)#
+
+   kd_time=end-start
+   name_list=[Naive method','K-D tree']
+   time_list=[naive_time,kd_time]
+   fig,ax=ply.subplots(figsie=(10,7))
+   x.bar(x=name_list, height=time_list)
+   ax.set_title('performance naive compared KD',frsize=15)
+   ply.show()
+    
+   kd=KDTree()
+   kd.insert(points)#kdtree%
+   start=int(round(time.time()*1000))
+   result2=kd.range(rectangle)
+   end =int(round(time.time()*1000))
+   print(f'K-D tree:{end-start}ms')
+  
+   assert sorted(result1)==sorted(result2)
+
+
+if__name__=='__main__':
+   range_test()
+   performance_test()
 
 
